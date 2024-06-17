@@ -35,14 +35,14 @@
   padding: 20px 0 60px;
 
   @include viewport-tablet {
-    padding: 60px 0 308px;
+    padding: 60px 0 288px;
     // margin-bottom: 188px;
   }
 
   @include viewport-desktop {
     // flex-direction: row;
     // gap: 30px;
-    padding: 30px 0 65px;
+    padding: 30px 0 84px;
     margin-bottom: 0;
   }
 
@@ -103,7 +103,7 @@
     flex-direction: row;
     align-items: center;
     gap: 30px;
-    padding: 0 40px 0 25px;
+    padding: 0 40px 0 65px;
     max-width: $desktop-width;
   }
 }
@@ -209,14 +209,18 @@
 .slider__nav-button {
   position: absolute;
   top: 0;
-  bottom: 0;
+  bottom: 188px;
   padding: 0 4px;
   background: none;
   border: 0;
   cursor: pointer;
 
   @include viewport-tablet {
-    padding: 30px;
+    padding: 34px;
+  }
+
+  @include viewport-desktop {
+    bottom: 0;
   }
 
   &::before {
