@@ -1,0 +1,277 @@
+.slider {
+  position: relative;
+
+  @include viewport-tablet {
+    &::after {
+      content: "";
+      display: block;
+      height: 188px;
+    }
+  }
+
+  @include viewport-desktop {
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.slider__list {
+  @include reset-list;
+  display: flex;
+  overflow-x: clip;
+
+  @include viewport-desktop {
+    margin-bottom: 0;
+  }
+}
+
+.slider__item {
+  position: relative;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  min-width: 100%;
+  padding: 20px 0 60px;
+
+  @include viewport-tablet {
+    padding: 60px 0 288px;
+    // margin-bottom: 188px;
+  }
+
+  @include viewport-desktop {
+    // flex-direction: row;
+    // gap: 30px;
+    padding: 30px 0 84px;
+    margin-bottom: 0;
+  }
+
+  &:first-child {
+    // background-color: $flat-white;
+  }
+
+  &:nth-child(2) {
+    background-color: $lavender-latte;
+  }
+
+  &:last-child {
+    background-color: $espresso;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: block;
+    height: 100%;
+    // background-color: red;
+    background-color: $flat-white;
+    z-index: -1;
+  }
+
+  // &::after {
+  //   // content: "";
+  //   display: block;
+  //   width: 100%;
+  //   height: 188px;
+  // }
+}
+
+.slider__item .container {
+  // @include viewport-tablet {
+  //   max-width: 608px;
+  // }
+
+  @include viewport-desktop {
+    // max-width: 100%;
+    max-width: $desktop-width;
+  }
+}
+
+.slider__item-inner {
+  display: flex;
+  flex-direction: column;
+
+  @include viewport-tablet {
+    max-width: 608px;
+    margin: 0 auto;
+  }
+
+  @include viewport-desktop {
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    padding: 0 40px 0 65px;
+    max-width: $desktop-width;
+  }
+}
+
+.slider__image-wrapper {
+  margin-bottom: 10px;
+
+  @include viewport-tablet {
+    position: absolute;
+    right: 0;
+    bottom: -188px;
+    left: 0;
+    margin: 0;
+  }
+
+  @include viewport-desktop {
+    position: relative;
+    bottom: 0;
+    flex: 1 0 600px;
+    margin-bottom: 0;
+    order: 0;
+  }
+}
+
+.slider__image {
+  display: block;
+  margin: 0 auto;
+}
+
+.slider__text-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  @include viewport-desktop {
+    align-items: start;
+    text-align: left;
+  }
+}
+
+.slider__title {
+  margin-bottom: 10px;
+
+  @include viewport-tablet {
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+  }
+
+  &::before {
+    content: "Новинка!";
+    position: relative;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: $base-primary;
+  }
+}
+
+.slider__description {
+  margin: 0;
+  margin-bottom: 20px;
+
+  @include viewport-tablet {
+    font-size: 20px;
+    line-height: 32px;
+  }
+
+  @include viewport-desktop {
+    margin-bottom: 40px;
+  }
+}
+
+.slider__action {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  @include viewport-tablet {
+    margin-bottom: 20px;
+  }
+}
+
+.slider__price {
+  display: flex;
+}
+
+.slider__price-old {
+  font-size: 16px;
+  line-height: 32px;
+  margin-right: 6px;
+  color: $base-primary;
+}
+
+.slider__price-now {
+  font-family: $semibold-font;
+  font-size: 20px;
+  line-height: 32px;
+}
+
+.slider__nav-button {
+  position: absolute;
+  top: 0;
+  bottom: 188px;
+  padding: 0 4px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+
+  @include viewport-tablet {
+    padding: 34px;
+  }
+
+  @include viewport-desktop {
+    bottom: 0;
+  }
+
+  &::before {
+    content: "";
+    position: relative;
+    display: block;
+    width: 12px;
+    height: 20px;
+    background-color: $base-primary;
+    mask-image: var(--bgi);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+  }
+
+  &--prev {
+    left: 0;
+  }
+
+  &--next {
+    right: 0;
+  }
+
+  &--prev::before {
+    --bgi: url("../../icons/stack.svg#arrow-prev");
+  }
+
+  &--next::before {
+    --bgi: url("../../icons/stack.svg#arrow-next");
+  }
+
+  &--prev:hover,
+  &--prev:focus {
+    background: linear-gradient(90deg, $base-white, transparent);
+  }
+
+  &--prev:active {
+    background: linear-gradient(90deg, $primary-opacity, transparent);
+  }
+
+  &--next:hover,
+  &--next:focus {
+    background: linear-gradient(-90deg, $base-white, transparent);
+  }
+
+  &--next:active {
+    background: linear-gradient(-90deg, $primary-opacity, transparent);
+  }
+
+  &:disabled,
+  &:disabled::before {
+    background: none;
+  }
+}
