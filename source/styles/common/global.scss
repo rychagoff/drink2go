@@ -50,7 +50,7 @@ img {
     font-size: 36px;
     line-height: 48px;
 
-    @include viewport-desktop {
+    @include viewport-tablet {
       font-size: 56px;
       line-height: 80px;
     }
